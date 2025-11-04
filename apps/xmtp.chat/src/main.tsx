@@ -1,5 +1,5 @@
 import "@mantine/core/styles.css";
-import "./tailwind.css";
+import "./main.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import pkg from "@xmtp/browser-sdk/package.json";
