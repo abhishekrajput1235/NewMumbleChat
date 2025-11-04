@@ -1,5 +1,5 @@
 import { useEffect, useState, type FC } from "react";
-import classes from "./MumbleLanding.module.css";
+import "./MumbleLandingRedesign.css";
 
 const Logo = "/favicon.svg";
 
@@ -156,17 +156,17 @@ export const MumbleLanding: FC = () => {
   }, []);
 
   const navClass = classNames(
-    classes.navbar,
-    scrolled && classes.navbarScrolled,
+    "navbar",
+    scrolled && "navbar-scrolled",
   );
 
   return (
-    <div className={classes.page}>
-      <div className={classes.background} aria-hidden="true" />
+    <div className="page">
+      <div className="background" aria-hidden="true" />
       <header className={navClass}>
-        <div className={classes.navContainer}>
+        <div className="nav-container">
           <a
-            className={classes.brand}
+            className="brand"
             href="#home"
             onClick={() => {
               setMenuOpen(false);
@@ -174,27 +174,27 @@ export const MumbleLanding: FC = () => {
             <img
               src={Logo}
               alt="MumbleChat Logo"
-              className={classes.brandIcon}
+              className="brand-icon"
               style={{ height: 32, width: 32 }}
             />
-            <span className={classes.brandLabel}>MumbleChat</span>
+            <span className="brand-label">MumbleChat</span>
           </a>
-          <nav className={classes.navLinks} aria-label="Primary">
+          <nav className="nav-links" aria-label="Primary">
             {navLinks.map(({ label, href }) => (
-              <a key={label} href={href} className={classes.navLink}>
+              <a key={label} href={href} className="nav-link">
                 {label}
               </a>
             ))}
           </nav>
-          <div className={classes.navActions}>
+          <div className="nav-actions">
             <a
-              className={classes.primaryButton}
+              className="button button-primary"
               href="http://localhost:5189/welcome">
               Connect Wallet
             </a>
             <button
               type="button"
-              className={classes.menuButton}
+              className="menu-button"
               aria-expanded={menuOpen}
               aria-controls="mumble-mobile-nav"
               onClick={() => {
@@ -209,13 +209,13 @@ export const MumbleLanding: FC = () => {
         {menuOpen && (
           <nav
             id="mumble-mobile-nav"
-            className={classes.mobileNav}
+            className="mobile-nav"
             aria-label="Mobile navigation">
             {navLinks.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
-                className={classes.mobileNavLink}
+                className="mobile-nav-link"
                 onClick={() => {
                   setMenuOpen(false);
                 }}>
@@ -223,7 +223,7 @@ export const MumbleLanding: FC = () => {
               </a>
             ))}
             <a
-              className={classes.mobilePrimaryButton}
+              className="button button-primary mobile-primary-button"
               href="http://localhost:5189/welcome"
               onClick={() => {
                 setMenuOpen(false);
@@ -234,20 +234,20 @@ export const MumbleLanding: FC = () => {
         )}
       </header>
 
-      <main className={classes.content}>
-        <section className={classes.hero} id="home">
-          <div className={classes.heroBadge}>Ramestta Layer-3 Blockchain</div>
-          <h1 className={classes.heroTitle}>
+      <main className="content">
+        <section className="hero section-padding" id="home">
+          <div className="hero-badge">Ramestta Layer-3 Blockchain</div>
+          <h1 className="hero-title">
             Institutional-grade decentralized messaging, powered by Ramestta.
           </h1>
-          <p className={classes.heroCopy}>
+          <p className="hero-copy">
             Ramestta is an Ethereum-aligned Layer-3 blockchain built on Polygon,
             engineered for real-world adoption with sub-2 second finality,
             65,000+ TPS, and deterministic micro-fees. Experience secure,
             censorship-resistant messaging with EVM compatibility and
             Ethereum-level trust.
           </p>
-          <ul className={classes.heroList}>
+          <ul className="hero-list">
             <li>
               True Layer-3 architecture: Built on Polygon, secured by Ethereum
             </li>
@@ -257,84 +257,84 @@ export const MumbleLanding: FC = () => {
             <li>Enterprise-grade throughput (65,000+ TPS)</li>
             <li>Production-ready for payments, gaming, DeFi, and more</li>
           </ul>
-          <div className={classes.heroActions}>
+          <div className="hero-actions">
             <a
-              className={classes.primaryButton}
+              className="button button-primary"
               href="http://localhost:5189/welcome">
               Connect Wallet
             </a>
-            <a className={classes.secondaryButton} href="#powered-by">
+            <a className="button button-secondary" href="#powered-by">
               Learn More About Ramestta
             </a>
           </div>
-          <p className={classes.heroNote}>
+          <p className="hero-note">
             Ramestta: The missing execution layer in Web3 infrastructure. Built
             for privacy, security, and true ownership of your communication.
           </p>
         </section>
 
         <section
-          className={classes.mockupSection}
+          className="mockup-section section-padding"
           aria-labelledby="mockup-heading">
-          <h2 id="mockup-heading" className={classes.sectionVisuallyHidden}>
+          <h2 id="mockup-heading" className="section-visually-hidden">
             Product preview
           </h2>
-          <div className={classes.mockupContainer}>
-            <div className={classes.mockupTopBar}>
-              <div className={classes.windowControls}>
+          <div className="mockup-container">
+            <div className="mockup-top-bar">
+              <div className="window-controls">
                 <span />
                 <span />
                 <span />
               </div>
-              <div className={classes.addressBar}>mumblechat.com</div>
+              <div className="address-bar">mumblechat.com</div>
             </div>
-            <div className={classes.mockupBody}>
-              <aside className={classes.channelColumn}>
-                <div className={classes.channelHeader}>
+            <div className="mockup-body">
+              <aside className="channel-column">
+                <div className="channel-header">
                   <span>Chats</span>
-                  <span className={classes.channelMenu}>⋮</span>
+                  <span className="channel-menu">⋮</span>
                 </div>
-                <div className={classes.channelSearch}>Search channels...</div>
-                <ul className={classes.channelList}>
+                <div className="channel-search">Search channels...</div>
+                <ul className="channel-list">
                   {channels.map((channel, index) => (
                     <li
                       key={channel}
                       className={classNames(
-                        classes.channelItem,
-                        index === 0 && classes.channelItemActive,
+                        "channel-item",
+                        index === 0 && "channel-item-active",
                       )}>
-                      <span className={classes.channelAvatar}>
+                      <span className="channel-avatar">
                         {channel.slice(0, 2)}
                       </span>
-                      <span className={classes.channelLabel}>{channel}</span>
+                      <span className="channel-label">{channel}</span>
                     </li>
                   ))}
                 </ul>
               </aside>
-              <div className={classes.threadColumn}>
-                <header className={classes.threadHeader}>
+              <div className="thread-column">
+                <header className="thread-header">
                   <div>
-                    <div className={classes.threadTitle}>0xe9..2d9</div>
-                    <div className={classes.threadStatus}>Online</div>
+                    <div className="thread-title">0xe9..2d9</div>
+                    <div className="thread-status">Online</div>
                   </div>
-                  <div className={classes.threadActions}>
+                  <div className="thread-actions">
                     <span />
                     <span />
                   </div>
                 </header>
-                <div className={classes.threadMessages}>
+                <div className="thread-messages">
                   {channelMessages.map(({ sender, content }) => (
                     <div
                       key={content}
                       className={classNames(
-                        classes.messageRow,
-                        sender === "me" && classes.messageRowOwn,
+                        "message-row",
+                        sender === "me" && "message-row-own",
                       )}>
-                      <div className={classes.messageBubble}>{content}</div>
+                      <div className="message-bubble">{content}</div>
                     </div>
                   ))}
                 </div>
-                <div className={classes.threadComposer}>
+                <div className="thread-composer">
                   Encrypted message composer
                 </div>
               </div>
@@ -342,9 +342,9 @@ export const MumbleLanding: FC = () => {
           </div>
         </section>
 
-        <section className={classes.powered} id="powered-by">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>Why Ramestta?</span>
+        <section className="powered section-padding" id="powered-by">
+          <div className="section-heading">
+            <span className="section-eyebrow">Why Ramestta?</span>
             <h2>Institutional-Grade Layer-3 Infrastructure</h2>
             <p>
               Ramestta completes the Ethereum scalability stack—not as a
@@ -353,7 +353,7 @@ export const MumbleLanding: FC = () => {
               centralized databases, no middlemen, no ads—just encrypted
               messages that you own.
             </p>
-            <ul className={classes.poweredList}>
+            <ul className="powered-list">
               <li>
                 <strong>True Layer-3 Architecture:</strong> Built on Polygon
                 (L2), secured by Ethereum (L1) for mass adoption.
@@ -393,18 +393,18 @@ export const MumbleLanding: FC = () => {
           </div>
         </section>
 
-        <section className={classes.features} id="features">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>Why MumbleChat</span>
+        <section className="features section-padding" id="features">
+          <div className="section-heading">
+            <span className="section-eyebrow">Why MumbleChat</span>
             <h2>Everything you need to own your conversations.</h2>
             <p>
               Privacy-first tooling, resilient infrastructure, and UI built for
               communities who live onchain.
             </p>
           </div>
-          <div className={classes.featureGrid}>
+          <div className="feature-grid">
             {featureCards.map((feature) => (
-              <article key={feature.title} className={classes.featureCard}>
+              <article key={feature.title} className="feature-card">
                 <h3>{feature.title}</h3>
                 <p>{feature.copy}</p>
               </article>
@@ -412,39 +412,39 @@ export const MumbleLanding: FC = () => {
           </div>
         </section>
 
-        <section className={classes.roadmap} id="roadmap">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>Roadmap</span>
+        <section className="roadmap section-padding" id="roadmap">
+          <div className="section-heading">
+            <span className="section-eyebrow">Roadmap</span>
             <h2>Ship fast, stay decentralized.</h2>
             <p>
               The path to a global, wallet-native messaging layer on Ramestta.
             </p>
           </div>
-          <div className={classes.roadmapTimeline}>
+          <div className="roadmap-timeline">
             {roadmapPhases.map((phase) => (
-              <article key={phase.title} className={classes.roadmapItem}>
-                <span className={classes.roadmapBadge}>{phase.phase}</span>
+              <article key={phase.title} className="roadmap-item">
+                <span className="roadmap-badge">{phase.phase}</span>
                 <h3>{phase.title}</h3>
                 <p>{phase.copy}</p>
-                <span className={classes.roadmapStatus}>{phase.status}</span>
+                <span className="roadmap-status">{phase.status}</span>
               </article>
             ))}
           </div>
         </section>
 
-        <section className={classes.tokenomics} id="tokenomics">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>Tokenomics</span>
+        <section className="tokenomics section-padding" id="tokenomics">
+          <div className="section-heading">
+            <span className="section-eyebrow">Tokenomics</span>
             <h2>Transparent allocation for network growth.</h2>
             <p>
               The MumbleChat token aligns early adopters, builders, and
               liquidity providers powering the Ramestta messaging layer.
             </p>
           </div>
-          <div className={classes.tokenomicGrid}>
+          <div className="tokenomic-grid">
             {allocations.map((allocation) => (
-              <article key={allocation.label} className={classes.tokenomicCard}>
-                <span className={classes.tokenomicPercent}>
+              <article key={allocation.label} className="tokenomic-card">
+                <span className="tokenomic-percent">
                   {allocation.percent}
                 </span>
                 <h3>{allocation.label}</h3>
@@ -454,14 +454,14 @@ export const MumbleLanding: FC = () => {
           </div>
         </section>
 
-        <section className={classes.faqs} id="faqs">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>FAQs</span>
+        <section className="faqs section-padding" id="faqs">
+          <div className="section-heading">
+            <span className="section-eyebrow">FAQs</span>
             <h2>Answers before you connect.</h2>
           </div>
-          <div className={classes.faqList}>
+          <div className="faq-list">
             {faqItems.map((faq) => (
-              <article key={faq.question} className={classes.faqItem}>
+              <article key={faq.question} className="faq-item">
                 <h3>{faq.question}</h3>
                 <p>{faq.answer}</p>
               </article>
@@ -469,27 +469,27 @@ export const MumbleLanding: FC = () => {
           </div>
         </section>
 
-        <section className={classes.cta}>
+        <section className="cta section-padding">
           <h2>Ready to take control of your conversations?</h2>
           <p>
             Connect your wallet to start sending encrypted messages on Ramestta.
             No emails. No phone numbers. Just you and your community.
           </p>
-          <div className={classes.ctaActions}>
+          <div className="cta-actions">
             <a
-              className={classes.primaryButton}
+              className="button button-primary"
               href="http://localhost:5189/welcome">
               Connect Wallet
             </a>
-            <a className={classes.secondaryButton} href="#powered-by">
+            <a className="button button-secondary" href="#powered-by">
               Learn more
             </a>
           </div>
         </section>
 
-        <section className={classes.ramesttaInfo} id="ramestta-info">
-          <div className={classes.sectionHeading}>
-            <span className={classes.sectionEyebrow}>
+        <section className="ramestta-info section-padding" id="ramestta-info">
+          <div className="section-heading">
+            <span className="section-eyebrow">
               Ramestta Layer-3 Blockchain
             </span>
             <h2>What is Ramestta?</h2>
@@ -501,12 +501,12 @@ export const MumbleLanding: FC = () => {
               compromising security, trust, or developer compatibility.
             </p>
           </div>
-          <div className={classes.ramesttaGrid}>
-            <div className={classes.ramesttaCard}>
-              <div className={classes.ramesttaCardTitle}>
+          <div className="ramestta-grid">
+            <div className="ramestta-card">
+              <div className="ramestta-card-title">
                 Layered Architecture
               </div>
-              <div className={classes.ramesttaCardDesc}>
+              <div className="ramestta-card-desc">
                 <strong>L1: Ethereum</strong> — Settlement & Security
                 <br />
                 <strong>L2: Polygon</strong> — Scalable Execution
@@ -514,11 +514,11 @@ export const MumbleLanding: FC = () => {
                 <strong>L3: Ramestta</strong> — Performance & Adoption
               </div>
             </div>
-            <div className={classes.ramesttaCard}>
-              <div className={classes.ramesttaCardTitle}>
+            <div className="ramestta-card">
+              <div className="ramestta-card-title">
                 Network Parameters
               </div>
-              <div className={classes.ramesttaCardDesc}>
+              <div className="ramestta-card-desc">
                 <strong>Type:</strong> Layer-3 (L3)
                 <br />
                 <strong>Chain ID:</strong> 1370
@@ -532,11 +532,11 @@ export const MumbleLanding: FC = () => {
                 <strong>Security:</strong> Ethereum-aligned PoS
               </div>
             </div>
-            <div className={classes.ramesttaCard}>
-              <div className={classes.ramesttaCardTitle}>
+            <div className="ramestta-card">
+              <div className="ramestta-card-title">
                 Endpoints & Explorer
               </div>
-              <div className={classes.ramesttaCardDesc}>
+              <div className="ramestta-card-desc">
                 <strong>RPC:</strong> blockchain.ramestta.com
                 <br />
                 <strong>RPC2:</strong> blockchain2.ramestta.com
@@ -548,9 +548,9 @@ export const MumbleLanding: FC = () => {
                 <strong>Swap DApp:</strong> ramaswap.com
               </div>
             </div>
-            <div className={classes.ramesttaCard}>
-              <div className={classes.ramesttaCardTitle}>Ready to Build?</div>
-              <div className={classes.ramesttaCardDesc}>
+            <div className="ramestta-card">
+              <div className="ramestta-card-title">Ready to Build?</div>
+              <div className="ramestta-card-desc">
                 Ramestta powers payments, gaming, DeFi, and national digital
                 infrastructure—today.
                 <br />
@@ -569,23 +569,23 @@ export const MumbleLanding: FC = () => {
         </section>
       </main>
 
-      <footer className={classes.footer}>
-        <div className={classes.footerBrand}>
+      <footer className="footer">
+        <div className="footer-brand">
           <img
             src={Logo}
             alt="MumbleChat Logo"
-            className={classes.brandIcon}
+            className="brand-icon"
             style={{ height: 32, width: 32 }}
           />
           <div>
-            <p className={classes.brandLabel}>MumbleChat</p>
-            <p className={classes.footerCopy}>
+            <p className="brand-label">MumbleChat</p>
+            <p className="footer-copy">
               Secure, decentralized messaging powered by the Ramestta
               blockchain.
             </p>
           </div>
         </div>
-        <div className={classes.footerLinks}>
+        <div className="footer-links">
           <div>
             <h3>Product</h3>
             <a href="#features">Features</a>
@@ -606,7 +606,7 @@ export const MumbleLanding: FC = () => {
             <a href="#faqs">FAQs</a>
           </div>
         </div>
-        <div className={classes.footerMeta}>
+        <div className="footer-meta">
           <span>
             © {new Date().getFullYear()} MumbleChat. Built on Ramestta.
           </span>
