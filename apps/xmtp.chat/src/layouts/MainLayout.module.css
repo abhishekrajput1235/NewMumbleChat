@@ -1,0 +1,392 @@
+/* =============================
+   Global Layout Variables
+============================= */
+:root {
+  --layout-padding: clamp(12px, 2vw, 20px);
+  --main-width: 100%;
+  --nav-width: 300px;
+  --header-padding: 1.125rem;
+  --header-button-height: 44px;
+  --main-border-width: 1px;
+  --main-border-color: rgba(71, 85, 105, 0.18);
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(148, 163, 184, 0.15);
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+
+  /* Derived */
+  --nav-dynamic-width: max(
+    calc((100dvw - var(--main-width)) / 2),
+    var(--nav-width)
+  );
+  --header-height: calc(
+    var(--header-padding) * 2 + var(--header-button-height) +
+      var(--main-border-width) * 2
+  );
+}
+
+/* =============================
+   Root Layout Container
+============================= */
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 105vh;
+  padding: var(--layout-padding);
+  box-sizing: border-box;
+  color: #f1f5f9;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(59, 130, 246, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 50% 120%,
+      rgba(139, 92, 246, 0.12),
+      transparent
+    ),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  background-attachment: fixed;
+  gap: clamp(10px, 1.2vw, 14px);
+}
+
+/* =============================
+   Header
+============================= */
+.header {
+  height: var(--header-height);
+  padding: var(--header-padding);
+  max-width: var(--main-width);
+  margin-left: var(--nav-dynamic-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: var(--layout-padding);
+  z-index: 100;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.9) 100%
+  );
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(148, 163, 184, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(180%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header:hover {
+  box-shadow: 
+    0 14px 50px rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.headerContent {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* =============================
+   Main Content Area
+============================= */
+.main {
+  position: relative;
+  z-index: 1;
+  max-width: var(--main-width);
+  margin-left: 320px;
+  flex-grow: 1;
+  margin-top: clamp(50px, 1.2vw, 14px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(28px) saturate(180%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 600px;
+}
+
+.main:hover {
+  box-shadow: 
+    0 24px 70px rgba(0, 0, 0, 0.5),
+    0 6px 16px rgba(59, 130, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.mainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* =============================
+   Sidebar (Aside)
+============================= */
+.aside {
+  position: fixed;
+  left: var(--layout-padding);
+  width: var(--nav-dynamic-width);
+  z-index: 90;
+  display: flex;
+  margin-right: clamp(100px, 1.2vw, 14px);
+
+  flex-direction: column;
+  align-items: flex-end;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 20px;
+
+  /* Removed all box-shadow layers */
+  /* Removed inset and glow */
+
+  background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(30, 41, 59, 0.9)
+    ),
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.1), transparent 60%);
+  backdrop-filter: blur(28px) saturate(180%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+
+/* .aside:hover {
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    0 6px 16px rgba(59, 130, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-color: rgba(59, 130, 246, 0.18);
+} */
+
+.asideNav {
+  width: var(--nav-width);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.asideNav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.asideNav::-webkit-scrollbar-track {
+  background: rgba(71, 85, 105, 0.08);
+  border-radius: 4px;
+}
+
+.asideNav::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.asideNav::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+.showNavbar {
+  transform: translateX(0) !important;
+}
+
+/* =============================
+   Footer
+============================= */
+.footer {
+  flex-shrink: 0;
+  max-width: var(--main-width);
+  margin-left: var(--nav-dynamic-width);
+  z-index: 50;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: var(--glass-bg);
+  box-shadow: 
+    0 -8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(10, 255, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  padding: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer:hover {
+  box-shadow: 
+    0 -12px 40px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(10, 255, 241, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.footerContent {
+  max-width: 100%;
+}
+
+/* =============================
+   Overlay (Mobile)
+============================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 20, 0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 80;
+}
+
+.overlayVisible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =============================
+   Responsive Breakpoints
+============================= */
+
+/* --- Large Tablets & Small Desktops --- */
+@media screen and (min-width: 1081px) {
+  .aside {
+    bottom: calc(var(--layout-padding) * 3 + 80px);
+    height: 70vh;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .aside {
+    transform: translateX(-110%);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0 20px 20px 0;
+    width: min(var(--nav-width), 85vw);
+  }
+
+  .header,
+  .main,
+  .footer {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .asideNav {
+    width: 100%;
+  }
+}
+
+/* --- Tablets --- */
+@media screen and (max-width: 768px) {
+  :root {
+    --layout-padding: clamp(8px, 2vw, 16px);
+    --nav-width: min(320px, 85vw);
+    --header-padding: 0.875rem;
+    --header-button-height: 36px;
+  }
+
+  .root {
+    gap: 10px;
+  }
+
+  .header {
+    border-radius: 14px;
+    position: relative;
+    top: 0;
+  }
+
+  .main {
+    border-radius: 14px;
+    min-height: 500px;
+  }
+
+  .aside {
+    width: min(85vw, 340px);
+    transform: translateX(-110%);
+    box-shadow: 
+      0 0 60px rgba(4, 8, 20, 0.8),
+      0 8px 24px rgba(10, 255, 241, 0.15);
+  }
+
+  .footer {
+    border-radius: 14px;
+    padding: 0.875rem;
+  }
+}
+
+/* --- Large Phones --- */
+@media screen and (max-width: 640px) {
+  :root {
+    --layout-padding: 8px;
+    --header-button-height: 32px;
+    --header-padding: 0.75rem;
+  }
+
+  .root {
+    gap: 8px;
+  }
+
+  .header {
+    border-radius: 12px;
+  }
+
+  .main {
+    border-radius: 12px;
+    min-height: 450px;
+  }
+
+  .aside {
+    width: 100%;
+    border-radius: 0;
+    transform: translateX(-110%);
+  }
+
+  .footer {
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+
+  .asideNav {
+    padding: 1rem;
+  }
+}
+
+/* --- Small Phones --- */
+@media screen and (max-width: 480px) {
+  :root {
+    --layout-padding: 6px;
+    --header-padding: 0.625rem;
+  }
+
+  .header,
+  .main,
+  .footer {
+    border-radius: 10px;
+  }
+
+  .main {
+    min-height: 400px;
+  }
+}
+
+/* --- Extra Small Devices (≤360px) --- */
+@media screen and (max-width: 360px) {
+  :root {
+    --layout-padding: 4px;
+  }
+
+  .header,
+  .main,
+  .footer {
+    border-radius: 8px;
+  }
+}

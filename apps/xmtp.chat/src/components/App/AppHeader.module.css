@@ -1,0 +1,281 @@
+/* =============================
+   Header Shell
+============================= */
+.shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 10px clamp(0.5rem, 2vw, 1.25rem);
+
+  background: rgba(10, 13, 25, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(10, 255, 241, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: padding 0.3s ease;
+}
+
+/* =============================
+   Brand Section
+============================= */
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.4rem, 1vw, 1rem);
+  transition: transform 0.25s ease;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.brandGroup:hover {
+  transform: translateY(-1px);
+}
+
+.brandIcon {
+  width: clamp(32px, 5vw, 44px);
+  height: clamp(32px, 5vw, 44px);
+  border-radius: 12px;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  color: #fff;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.brandIcon:hover {
+  transform: scale(1.08);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brandName {
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.brandTagline {
+  font-size: clamp(0.55rem, 1.3vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+/* =============================
+   Controls Section
+============================= */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.4rem, 1vw, 0.8rem);
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.environment {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: clamp(0.65rem, 1.4vw, 0.8rem);
+  transition: 0.2s ease;
+}
+
+.environment:hover {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-1px);
+}
+
+.account {
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 10px;
+ 
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: #e0f2fe;
+  font-weight: 700;
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.account:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* =============================
+   Burger (Mobile Menu)
+============================= */
+.burger {
+  display: none;
+  margin: 1px;
+  background: white;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  cursor: pointer;
+}
+
+.burger:hover {
+  background: rgb(255, 255, 255);
+}
+
+@media (max-width: 1080px) {
+  .burger {
+    display: block;
+  }
+}
+
+/* =============================
+   Responsiveness
+============================= */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .shell {
+    padding: 8px 14px;
+    gap: 0.75rem;
+  }
+
+  .brandTagline {
+    font-size: 0.6rem;
+  }
+
+  .controls {
+    gap: 0.5rem;
+  }
+
+  .account {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Large Phones (640px and below) */
+@media (max-width: 640px) {
+  .shell {
+    padding: 8px 10px;
+  }
+
+  .brandGroup {
+    gap: 0.5rem;
+  }
+
+  .brandTagline {
+    display: none;
+  }
+
+  .brandName {
+    font-size: 1rem;
+  }
+
+  .environment {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .account {
+    padding: 5px 9px;
+  }
+}
+
+/* Medium Phones (540px and below) */
+@media (max-width: 540px) {
+  .shell {
+    padding: 6px 8px;
+  }
+
+  .brandName {
+    font-size: 0.95rem;
+  }
+
+  .brandIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .controls {
+    gap: 0.4rem;
+  }
+
+  .environment {
+    display: none; /* hide to prevent overlap */
+  }
+}
+
+/* Small Phones (420px and below) */
+@media (max-width: 420px) {
+  .shell {
+    padding: 6px;
+  }
+
+  .brandIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .brandName {
+    font-size: 0.9rem;
+  }
+
+  .account {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+  }
+
+  .controls {
+    gap: 0.35rem;
+  }
+}
+
+/* Very Small Phones (360px and below) */
+@media (max-width: 360px) {
+  .brandName {
+    font-size: 0.85rem;
+  }
+
+  .account {
+    font-size: 0.7rem;
+    padding: 4px 7px;
+  }
+
+  .controls {
+    gap: 0.3rem;
+  }
+
+  .burger {
+    padding: 6px;
+  }
+}
